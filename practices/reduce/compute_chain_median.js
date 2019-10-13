@@ -2,11 +2,13 @@
 
 function compute_chain_median(collection) {
   //write code here
+  collection = collection.split('->');
   const collectionLength = collection.length;
-  return collection.split('->')
-  			.sort((num, cur) => num - cur)
-  			.reduce((num, index) =>{
-  				return collectionLength % 2 == 0 ? collection[collectionLength/2] : collection[collectionLength / 2 - 0.5 ] -1 + 0.5 ;
+  const median = collectionLength / 2;
+
+  return collection.sort((num, cur) => num - cur)
+  			.reduce(num =>{
+  				return median % 3 == 0 ? collection[median] - 1 + 0.5 : parseInt(collection[Math.floor(median)]);
   			});
 }
 
